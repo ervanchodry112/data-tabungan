@@ -6,6 +6,7 @@ echo $this->section('navbar');
 
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
+
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
             <img src="/assets/img/icon.png" alt="" />
@@ -14,6 +15,7 @@ echo $this->section('navbar');
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
     <!-- End Logo -->
+
 </header>
 <!-- End Header -->
 
@@ -125,6 +127,7 @@ echo $this->section('navbar');
         </li> -->
         <!-- End Components Nav -->
     </ul>
+
 </aside>
 <!-- End Sidebar-->
 
