@@ -11,7 +11,7 @@ echo $this->section('navbar');
 				<div class="row justify-content-center">
 					<div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 						<div class="d-flex justify-content-center py-4">
-							<a href="<?= base_url('home') ?>" class="logo grid text-center">
+							<a href="<?= base_url('auth/login') ?>" class="logo grid text-center">
 								<div class="g-col-6 mb-2">
 									<img src="/assets/img/icon.png" alt="">
 								</div>

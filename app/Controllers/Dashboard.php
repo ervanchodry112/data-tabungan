@@ -22,12 +22,15 @@ class Dashboard extends BaseController
 
     public function users()
     {
+		$model = new \App\Models\User();
+
+	
+		
         $data = [
             'title' => "Users",
-
-            // TODO : Masukkan data user ke dalam array dibawah ini
-            'users' => []
+            'users' => $model->findAll()
         ];
+
         return view('dashboard/users', $data);
     }
 }
