@@ -10,7 +10,7 @@ echo $this->section('navbar');
 	<div class="d-flex align-items-center justify-content-between">
 		<a href="index.html" class="logo d-flex align-items-center">
 			<img src="/assets/img/icon.png" alt="" />
-			<span class="d-none d-lg-block">SaveLife</span>
+			<span class="d-none d-lg-block">SaveMoney</span>
 		</a>
 		<i class="bi bi-list toggle-sidebar-btn"></i>
 	</div>
@@ -143,7 +143,7 @@ echo $this->section('navbar');
 <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
 	<div class="copyright">
-		&copy; Copyright <strong><span>SaveLife</span></strong>. All Rights Reserved
+		&copy; Copyright <strong><span>SaveMoney</span></strong>. All Rights Reserved
 	</div>
 	<div class="credits">
 		<!-- All the links in the footer should remain intact. -->

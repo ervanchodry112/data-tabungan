@@ -16,7 +16,7 @@ echo $this->section('navbar');
 									<img src="/assets/img/icon.png" alt="">
 								</div>
 								<div class="g-col-6">
-									<span class="d-none d-lg-block">Save Life</span>
+									<span class="d-none d-lg-block">Save Money</span>
 								</div>
 							</a>
 						</div><!-- End Logo -->
