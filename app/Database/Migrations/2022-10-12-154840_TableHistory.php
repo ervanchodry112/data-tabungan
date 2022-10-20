@@ -50,11 +50,14 @@ class TableHistory extends Migration
         ]);
 
         $this->forge->addKey('id_history', true);
+        $this->forge->addKey('id_user');
+        $this->forge->addKey('status');
         $this->forge->createTable('history');
     }
 
     public function down()
     {
+        // $this->forge->dropForeignKey('history', 'id_user');
         $this->forge->dropTable('history');
     }
 }

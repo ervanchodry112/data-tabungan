@@ -19,7 +19,7 @@ echo $this->section('content');
 	<section class="section dashboard">
 		<div class="row">
 			<div class="card p-3">
-				<form action="" method="POST">
+				<form action="<?= base_url('dashboard/add_user') ?>" method="POST">
 					<div class="p-4 row">
 						<div class="col-6">
 							<div class="form-group">
