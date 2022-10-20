@@ -11,12 +11,12 @@ echo $this->section('navbar');
 				<div class="row justify-content-center">
 					<div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 						<div class="d-flex justify-content-center py-4">
-							<a href="<?= base_url('home') ?>" class="logo grid text-center">
+							<a href="<?= base_url('') ?>" class="logo grid text-center">
 								<div class="g-col-6 mb-2">
 									<img src="/assets/img/icon.png" alt="">
 								</div>
 								<div class="g-col-6">
-									<span class="d-none d-lg-block">Save Life</span>
+									<span class="d-none d-lg-block">Save Money</span>
 								</div>
 							</a>
 						</div><!-- End Logo -->
@@ -26,7 +26,7 @@ echo $this->section('navbar');
 							<div class="card-body ">
 								<div class="pt-4 pb-2">
 									<h5 class="card-title text-center pb-0 fs-4">Login</h5>
-									<p class="text-center small">Login to <b>Save Live</b></p>
+									<p class="text-center small">Login to <b>Save Money</b></p>
 								</div>
 
 								<form class="row g-3 needs-validation px-3" novalidate>
