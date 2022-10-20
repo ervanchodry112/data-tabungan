@@ -13,7 +13,7 @@ class AddBalance extends Seeder
     {
         $faker = Factory::create('id_ID');
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 1; $i <= 5; $i++) {
             $name = $faker->name;
             $slug = url_title($name, '-', true);
             $data = [

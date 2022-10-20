@@ -11,7 +11,7 @@ class User extends Model
 	protected $useAutoIncrement = true;
 	protected $insertID         = 0;
 	protected $returnType       = 'array';
-	protected $useSoftDeletes   = true;
+	protected $useSoftDeletes   = false;
 	protected $allowedFields    = ['name', 'email', 'slug'];
 
 	// Dates
@@ -24,6 +24,6 @@ class User extends Model
 	public function getUserData()
 	{
 		return $this->db->table('user')->join('account_balance', 'user.id=account_balance.id_user')
-			->get()->getResultArray();
+			->get()->getResultObject();
 	}
 }
