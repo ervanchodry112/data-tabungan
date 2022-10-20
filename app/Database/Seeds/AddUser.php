@@ -16,7 +16,7 @@ class AddUser extends Seeder
             $name = $faker->name;
             $slug = url_title($name, '-', true);
             $data = [
-                'name' => $faker->name,
+                'name' => $name,
                 'email' => $faker->email,
                 'slug' => $slug,
                 'created_at' => Time::now('Asia/Jakarta', 'id_ID'),

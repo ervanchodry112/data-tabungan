@@ -40,8 +40,9 @@ class AccountBalance extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addUniqueKey('id_user');
+        $this->forge->addKey('id_user');
         $this->forge->createTable('account_balance');
+        
     }
 
     public function down()
