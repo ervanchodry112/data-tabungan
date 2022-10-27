@@ -40,7 +40,6 @@ echo $this->section('content');
                             <th scope="col">#</th>
                             <th scope="col">Action</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Email</th>
                             <th scope="col">Balance</th>
                         </tr>
                     </thead>
@@ -60,7 +59,6 @@ echo $this->section('content');
                                     </a>
                                     </th>
                                 <td><?= $user->name ?></td>
-                                <td><?= $user->email ?></td>
                                 <td>Rp <?= number_format($user->balance, 2, ',', '.') ?></td>
                                 <!-- TODO: Masukkan data user ke sini -->
                             </tr>
