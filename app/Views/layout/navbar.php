@@ -7,54 +7,61 @@ echo $this->section('navbar');
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
 
-	<div class="d-flex align-items-center justify-content-between">
-		<a href="index.html" class="logo d-flex align-items-center">
-			<img src="/assets/img/icon.png" alt="" />
-			<span class="d-none d-lg-block">SaveMoney</span>
-		</a>
-		<i class="bi bi-list toggle-sidebar-btn"></i>
-	</div>
-	<!-- End Logo -->
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+            <img src="/assets/img/icon.png" alt="" />
+            <span class="d-none d-lg-block">SaveMoney</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+    <!-- End Logo -->
 
 </header>
 <!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
-	<ul class="sidebar-nav" id="sidebar-nav">
-		<li class="nav-heading">Main</li>
-		<li class="nav-item">
-			<a class="nav-link" href="<?= base_url('') ?>">
-				<i class="bi bi-grid"></i>
-				<span>Dashboard</span>
-			</a>
-		</li>
-		<!-- End Dashboard Nav -->
+    <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-heading">Main</li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('') ?>">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <!-- End Dashboard Nav -->
 
-		<li class="nav-item">
-			<a class="nav-link collapsed" href="<?= base_url('dashboard/history') ?>">
-				<i class="bi bi-clock-history"></i>
-				<span>History</span>
-			</a>
-		</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= base_url('dashboard/history') ?>">
+                <i class="bi bi-clock-history"></i>
+                <span>History</span>
+            </a>
+        </li>
 
 
-		<li class="nav-heading">Account</li>
-		<li class="nav-item">
-			<a class="nav-link collapsed" href="<?= base_url('dashboard/users') ?>">
-				<i class="bi bi-people-fill"></i>
-				<span>Users</span>
-			</a>
-		</li>
+        <li class="nav-heading">Admin</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= base_url('dashboard/users') ?>">
+                <i class="bi bi-people-fill"></i>
+                <span>Users</span>
+            </a>
+        </li>
 
-		<li class="nav-item">
-			<a class="nav-link collapsed" href="<?= base_url('/auth/login') ?>">
-				<i class="bi bi-box-arrow-right"></i>
-				<span>Logout</span>
-			</a>
-		</li>
-		<!-- End Dashboard Nav -->
-		<!-- 
+        <li class="nav-heading">Account</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= base_url('/auth/login') ?>">
+                <i class="bi bi-person-fill"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="<?= base_url('/auth/logout') ?>">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+        <!-- End Dashboard Nav -->
+        <!-- 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -132,8 +139,8 @@ echo $this->section('navbar');
                 </li>
             </ul>
         </li> -->
-		<!-- End Components Nav -->
-	</ul>
+        <!-- End Components Nav -->
+    </ul>
 
 </aside>
 <!-- End Sidebar-->
