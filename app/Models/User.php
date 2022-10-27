@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class User extends Model
 {
-	protected $table            = 'user';
+	protected $table            = 'pengguna';
 	protected $primaryKey       = 'id';
 	protected $useAutoIncrement = true;
 	protected $insertID         = 0;
@@ -23,7 +23,7 @@ class User extends Model
 
 	public function getUserData()
 	{
-		return $this->db->table('user')->join('account_balance', 'user.id=account_balance.id_user')
+		return $this->db->table('pengguna')->join('account_balance', 'pengguna.id=account_balance.id_user')
 			->get()->getResultObject();
 	}
 }
