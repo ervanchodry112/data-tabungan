@@ -3,17 +3,18 @@
 namespace App\Controllers;
 
 use App\Models\Balance;
-use App\Models\User;
+use App\Models\History;
 
 class Dashboard extends BaseController
 {
-	protected $user;
+
 	protected $balance;
+	protected $history;
 
 	public function __construct()
 	{
-		$this->user = new User();
 		$this->balance = new Balance();
+		$this->history = new History();
 	}
 
 	public function index()
@@ -26,8 +27,10 @@ class Dashboard extends BaseController
 
 	public function history()
 	{
+		$transaction = $this->history->where('id_user', user_id())->findAll();
 		$data = [
-			'title' => 'History'
+			'title' => 'History Transactions',
+			'transaction' => $transaction
 		];
 		return view('dashboard/history', $data);
 	}
