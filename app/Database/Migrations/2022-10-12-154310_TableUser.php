@@ -9,41 +9,6 @@ class TableUser extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => [
-                'type' => 'INT',
-                'constraint' => 3,
-                'null' => false,
-                'auto_increment' => true,
-            ],
-            'name' => [
-                'type' => 'VARCHAR',
-                'constraint' => 100,
-                'null' => false,
-            ],
-            'slug' => [
-                'type' => 'VARCHAR',
-                'constraint' => 100,
-                'null' => false,
-            ],
-            'created_at' => [
-                'type' => 'DATETIME',
-                'null' => false,
-            ],
-            'updated_at' => [
-                'type' => 'DATETIME',
-                'null' => false,
-            ],
-            'deleted_at' => [
-                'type' => 'DATETIME',
-                'null' => false,
-            ],
-        ]);
-
-        $this->forge->addKey('id', true);
-        $this->forge->addKey('slug', false, true);
-        $this->forge->createTable('pengguna');
-
-        $this->forge->addField([
             'id_status' => [
                 'type' => 'INT',
                 'constraint' => 1,
@@ -83,6 +48,7 @@ class TableUser extends Migration
                 'type' => 'INT',
                 'constraint' => 3,
                 'null' => false,
+                'unsigned' => true,
             ],
             'id_receipt' => [
                 'type' => 'INT',
@@ -119,7 +85,7 @@ class TableUser extends Migration
         ]);
 
         $this->forge->addKey('id_history', true);
-        $this->forge->addForeignKey('id_user', 'pengguna', 'id', '', 'CASCADE');
+        $this->forge->addForeignKey('id_user', 'users', 'id', '', 'CASCADE');
         $this->forge->addForeignKey('status', 'status', 'id_status', '', 'CASCADE');
         $this->forge->createTable('history');
 
@@ -135,6 +101,7 @@ class TableUser extends Migration
                 'type' => 'INT',
                 'constraint' => 3,
                 'null' => false,
+                'unsigned' => true,
             ],
             'balance' => [
                 'type' => 'INT',
@@ -156,9 +123,8 @@ class TableUser extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('id_user', 'pengguna', 'id', '', 'CASCADE');
+        $this->forge->addForeignKey('id_user', 'users', 'id', '', 'CASCADE');
         $this->forge->createTable('account_balance');
-        
     }
 
     public function down()
@@ -166,6 +132,5 @@ class TableUser extends Migration
         $this->forge->dropTable('account_balance');
         $this->forge->dropTable('history');
         $this->forge->dropTable('status');
-        $this->forge->dropTable('pengguna');
     }
 }
