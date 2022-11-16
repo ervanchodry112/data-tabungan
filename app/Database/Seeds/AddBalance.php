@@ -11,33 +11,33 @@ class AddBalance extends Seeder
 {
     public function run()
     {
-        $faker = Factory::create('id_ID');
+        $user = [
+            'id'            => 1,
+            'email'         => 'nasabah@email.com',
+            'username'      => 'nasabah',
+            'name'          => 'Nasabah',
+            'slug'          => 'nasabah',
+            'password_hash' => password_hash('123456', PASSWORD_DEFAULT),
+        ];
 
-        for ($i = 1; $i <= 5; $i++) {
-            $name = $faker->name;
-            $slug = url_title($name, '-', true);
-            $data = [
-                'id' => $i,
-                'name' => $name,
-                'slug' => $slug,
-                'created_at' => Time::now('Asia/Jakarta', 'id_ID'),
-            ];
-            $this->db->table('pengguna')->insert($data);
+        $this->db->table('users')->insert($user);
 
-            $balance = [
-                'id_user' => $i,
-                'balance' => $faker->numberBetween(10000, 1000000),
-                'created_at' => Time::now('Asia/Jakarta', 'id_ID'),
-            ];
-            $this->db->table('account_balance')->insert($balance);
+        $balance = [
+            'id_user' => 1,
+            'balance' => 1000000,
+        ];
 
-            $users = [
-                'email' => ($name . '@gmail.com'),
-                'username' => $slug,
-                'id_user'   => $i,
-                'password_hash' => password_hash('123456', PASSWORD_DEFAULT),
-            ];
-            $this->db->table('users')->insert($users);
-        }
+        $this->db->table('account_balance')->insert($balance);
+
+        $admin = [
+            'id'            => 2,
+            'email'         => 'admin@email.com',
+            'username'      => 'admin',
+            'name'          => 'Admin',
+            'slug'          => 'admin',
+            'password_hash' => password_hash('123456', PASSWORD_DEFAULT),
+        ];
+
+        $this->db->table('users')->insert($admin);
     }
 }
