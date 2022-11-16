@@ -39,21 +39,16 @@ class TableUser extends Migration
 
         $this->forge->addField([
             'id_history' => [
-                'type' => 'INT',
-                'constraint' => 3,
+                'type' => 'VARCHAR',
+                'constraint' => 255,
                 'null' => false,
-                'auto_increment' => true,
+                // 'primary' => true,
             ],
             'id_user' => [
                 'type' => 'INT',
                 'constraint' => 3,
                 'null' => false,
                 'unsigned' => true,
-            ],
-            'id_receipt' => [
-                'type' => 'INT',
-                'constraint' => 3,
-                'null' => false,
             ],
             'amount' => [
                 'type' => 'INT',
@@ -68,6 +63,10 @@ class TableUser extends Migration
             'status' => [
                 'type' => 'INT',
                 'constraint' => 1,
+                'null' => false,
+            ],
+            'tanggal' => [
+                'type' => 'DATETIME',
                 'null' => false,
             ],
             'created_at' => [
