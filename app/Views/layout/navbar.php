@@ -160,7 +160,7 @@ echo $this->section('navbar');
 <?= $this->renderSection('content') ?>
 
 <!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
+<footer id="footer" class="footer position-fixed bottom-0 start-0 end-0">
     <div class="copyright">
         &copy; Copyright <strong><span>SaveMoney</span></strong>. All Rights Reserved
     </div>
