@@ -10,17 +10,33 @@ class Dashboard extends BaseController
 
 	protected $balance;
 	protected $history;
+	protected $user;
 
 	public function __construct()
 	{
 		$this->balance = new Balance();
 		$this->history = new History();
+		$this->user = new \Myth\Auth\Models\UserModel();
 	}
 
 	public function index()
 	{
+		$pemasukan = $this->history->selectSum('amount', 'pemasukan')->where('id_user', user_id())->where('jenis_transaksi', 1)->first();
+		$pengeluaran = $this->history->selectSum('amount', 'pengeluaran')->where('id_user', user_id())->where('jenis_transaksi', 2)->first();
+		$transactionAll = $this->history->where('id_user', user_id())->findAll();
+		$transactionMasuk = $this->history->where('id_user', user_id())->where('jenis_transaksi', 1)->findAll();
+		$transactionKeluar = $this->history->where('id_user', user_id())->where('jenis_transaksi', 2)->findAll();
+
+
 		$data = [
-			'title' => 'Dashboard'
+			'title' => 'Dashboard',
+			'balance' => $this->balance->where('id_user', user_id())->first(),
+			'pemasukan' => $pemasukan,
+			'pengeluaran' => $pengeluaran,
+			'transactionAll' => $transactionAll,
+			'transactionMasuk' => $transactionMasuk,
+			'transactionKeluar' => $transactionKeluar,
+
 		];
 		return view('dashboard/dashboard', $data);
 	}
@@ -115,6 +131,46 @@ class Dashboard extends BaseController
 		if ($this->user->affectedRows() > 0) {
 			session()->setFlashdata('pesan', 'User berhasil di hapus');
 			return redirect()->to('/dashboard/users');
+		}
+	}
+	public function profile()
+	{
+
+		$data = [
+			'title' => 'Profile',
+			'user' => $this->user->where('id', user_id())->first()
+		];
+
+		return view('dashboard/profile', $data);
+	}
+
+	public function editUser($id)
+	{
+		$users = $this->user->where('id', user_id())->first();
+
+		$data = [
+			'title' => 'Edit User',
+			'user' => $users
+		];
+		return view('dashboard/profile', $data);
+	}
+
+	public function updateUser()
+	{
+		$input = $this->request->getVar();
+		$user = [
+			'id' => user_id(),
+			'email' => $input['email'],
+			'username' => $input['username'],
+			'name' => $input['name'],
+		];
+
+		$this->user->save($user);
+
+
+		if ($this->user->affectedRows() > 0) {
+			session()->setFlashdata('pesan', 'User berhasil di updates');
+			return redirect()->to('/dashboard/profile');
 		}
 	}
 }
