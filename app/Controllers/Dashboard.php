@@ -21,8 +21,22 @@ class Dashboard extends BaseController
 
 	public function index()
 	{
+		$pemasukan = $this->history->selectSum('amount', 'pemasukan')->where('id_user', user_id())->where('jenis_transaksi', 1)->first();
+		$pengeluaran = $this->history->selectSum('amount', 'pengeluaran')->where('id_user', user_id())->where('jenis_transaksi', 2)->first();
+		$transactionAll = $this->history->where('id_user', user_id())->findAll();
+		$transactionMasuk = $this->history->where('id_user', user_id())->where('jenis_transaksi', 1)->findAll();
+		$transactionKeluar = $this->history->where('id_user', user_id())->where('jenis_transaksi', 2)->findAll();
+
+
 		$data = [
-			'title' => 'Dashboard'
+			'title' => 'Dashboard',
+			'balance' => $this->balance->where('id_user', user_id())->first(),
+			'pemasukan' => $pemasukan,
+			'pengeluaran' => $pengeluaran,
+			'transactionAll' => $transactionAll,
+			'transactionMasuk' => $transactionMasuk,
+			'transactionKeluar' => $transactionKeluar,
+
 		];
 		return view('dashboard/dashboard', $data);
 	}
