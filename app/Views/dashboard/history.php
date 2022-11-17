@@ -10,11 +10,26 @@ echo $this->section('content');
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item active">History</li>
+                <li class="breadcrumb-item active">Transaksi</li>
             </ol>
         </nav>
     </div>
     <!-- End Page Title -->
+    <?php
+    if (session('success')) {
+    ?>
+        <div class="alert alert-success">
+            <?= session('success') ?>
+        </div>
+    <?php
+    } else if (session('error')) {
+    ?>
+        <div class="alert alert-danger">
+            <?= session('error') ?>
+        </div>
+    <?php
+    }
+    ?>
 
     <section class="section dashboard">
         <div class="row">
@@ -63,8 +78,10 @@ echo $this->section('content');
                                     <th scope="row"><?= $i++ ?></th>
                                     <td><?= $t->id_history ?></td>
                                     <td><?= $t->amount ?></td>
-                                    <td><?= $t->jenis_transaksi ?></td>
+                                    <td class="text-<?= ($t->jenis_transaksi == 1 ? 'success">Pemasukan' : 'danger">Pengeluaran') ?></td>
                                     <td><?= $t->tanggal ?></td>
+                                    <td class=" text-<?= ($t->status == 1 ? 'warning">Pending' : ($t->status == 2 ? 'success">Sukses' : 'danger">Gagal')) ?></td>
+
                                 </tr>
                             <?php
                             }
@@ -79,19 +96,20 @@ echo $this->section('content');
 <!-- End #main -->
 
 
-<div class="modal fade" id="setorModal" tabindex="-1" aria-labelledby="setorModal" aria-hidden="true">
+<div class=" modal fade" id="setorModal" tabindex="-1" aria-labelledby="setorModal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Setor Tunai</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('transactions/add_saldo') ?>" method="post">
+            <form action="<?= base_url('transactions/setor') ?>" method="post">
                 <div class="modal-body">
                     <div class="row mb-3">
-                        <label for="nominal" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" id="nominal">
+                        <label for="nominal" class="col-sm-2 col-form-label">Nominal</label>
+                        <div class="col-sm-10 input-group">
+                            <span class="input-group-text">Rp</span>
+                            <input type="number" name="nominal" class="form-control" id="nominal">
                         </div>
                     </div>
                 </div>

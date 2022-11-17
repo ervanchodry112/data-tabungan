@@ -11,10 +11,10 @@ class History extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
-    protected $returnType       = 'array';
+    protected $returnType       = History::class;
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_history', 'id_user', 'amount', 'jenis_transaksi', 'status'];
+    protected $allowedFields    = ['id_history', 'id_user', 'amount', 'jenis_transaksi', 'status', 'tanggal'];
 
     // Dates
     protected $useTimestamps = true;
