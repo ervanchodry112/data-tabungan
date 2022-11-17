@@ -10,6 +10,7 @@ use DateTime;
 
 class Transactions extends BaseController
 {
+
     protected $balance;
     protected $history;
     protected $user;
