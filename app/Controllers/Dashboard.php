@@ -10,11 +10,13 @@ class Dashboard extends BaseController
 
 	protected $balance;
 	protected $history;
+	protected $user;
 
 	public function __construct()
 	{
 		$this->balance = new Balance();
 		$this->history = new History();
+		$this->user = new \Myth\Auth\Models\UserModel();
 	}
 
 	public function index()
@@ -113,6 +115,46 @@ class Dashboard extends BaseController
 		if ($this->user->affectedRows() > 0) {
 			session()->setFlashdata('pesan', 'User berhasil di hapus');
 			return redirect()->to('/dashboard/users');
+		}
+	}
+	public function profile()
+	{
+
+		$data = [
+			'title' => 'Profile',
+			'user' => $this->user->where('id', user_id())->first()
+		];
+
+		return view('dashboard/profile', $data);
+	}
+
+	public function editUser($id)
+	{
+		$users = $this->user->where('id', user_id())->first();
+
+		$data = [
+			'title' => 'Edit User',
+			'user' => $users
+		];
+		return view('dashboard/profile', $data);
+	}
+
+	public function updateUser()
+	{
+		$input = $this->request->getVar();
+		$user = [
+			'id' => user_id(),
+			'email' => $input['email'],
+			'username' => $input['username'],
+			'name' => $input['name'],
+		];
+
+		$this->user->save($user);
+
+
+		if ($this->user->affectedRows() > 0) {
+			session()->setFlashdata('pesan', 'User berhasil di updates');
+			return redirect()->to('/dashboard/profile');
 		}
 	}
 }
