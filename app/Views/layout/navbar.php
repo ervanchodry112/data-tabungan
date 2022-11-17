@@ -8,10 +8,10 @@ echo $this->section('navbar');
 <header id="header" class="header fixed-top d-flex align-items-center">
 
 	<div class="d-flex align-items-center justify-content-between">
-		<a href="index.html" class="logo d-flex align-items-center">
+		<div class="logo d-flex align-items-center">
 			<img src="/assets/img/icon.png" alt="" />
 			<span class="d-none d-lg-block">SaveMoney</span>
-		</a>
+		</div>
 		<i class="bi bi-list toggle-sidebar-btn"></i>
 	</div>
 	<!-- End Logo -->
@@ -28,7 +28,7 @@ echo $this->section('navbar');
 		?>
 			<li class="nav-heading">Main</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('') ?>">
+				<a class="nav-link collapsed" href="<?= base_url('') ?>">
 					<i class="bi bi-grid"></i>
 					<span>Dashboard</span>
 				</a>
@@ -36,15 +36,15 @@ echo $this->section('navbar');
 			<!-- End Dashboard Nav -->
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= base_url('dashboard/history') ?>">
-                    <i class="bi bi-clock-history"></i>
-                    <span>Transaksi</span>
-                </a>
-            </li>
-        <?php
-        }
-        ?>
+			<li class="nav-item">
+				<a class="nav-link collapsed" href="<?= base_url('dashboard/history') ?>">
+					<i class="bi bi-clock-history"></i>
+					<span>Transaksi</span>
+				</a>
+			</li>
+		<?php
+		}
+		?>
 
 		<?php
 		if (in_groups('admin')) {
@@ -83,9 +83,9 @@ echo $this->section('navbar');
 
 
 <footer id="footer" class="footer bg-white position-fixed bottom-0 start-0 end-0">
-    <div class="copyright">
-        &copy; Copyright <strong><span>SaveMoney</span></strong>. All Rights Reserved
-    </div>
+	<div class="copyright">
+		&copy; Copyright <strong><span>SaveMoney</span></strong>. All Rights Reserved
+	</div>
 </footer>
 <!-- End Footer -->
 
