@@ -44,9 +44,11 @@ class Dashboard extends BaseController
 	public function history()
 	{
 		$transaction = $this->history->where('id_user', user_id())->findAll();
+		$saldo = $this->balance->where('id_user', user_id())->first();
 		$data = [
 			'title' => 'Transaksi',
-			'transaction' => $transaction
+			'transaction' => $transaction,
+			'saldo'			=> $saldo,
 		];
 		return view('dashboard/history', $data);
 	}
