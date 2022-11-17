@@ -6,16 +6,19 @@ use App\Controllers\BaseController;
 use App\Models\Balance;
 use App\Models\History;
 use CodeIgniter\I18n\Time;
+use DateTime;
 
 class Transactions extends BaseController
 {
     protected $balance;
     protected $history;
+    protected $user;
 
     public function __construct()
     {
         $this->balance = new Balance();
         $this->history = new History();
+        $this->user = new \Myth\Auth\Models\UserModel();
     }
 
     public function index()
@@ -52,7 +55,7 @@ class Transactions extends BaseController
         // dd($data);
 
         $user = $this->balance->where('id_user', user_id())->first();
-        $new_balance = $user['balance'] + $input['nominal'];
+        $new_balance = $user->balance + $input['nominal'];
 
         $updateBalance = [
             'id'    => $user['id'],
@@ -91,18 +94,15 @@ class Transactions extends BaseController
         }
 
         $input = $this->request->getVar();
-        $data = [
-            'id_history'    => uniqid(),
-            'id_user'       => user_id(),
-            'amount'        => $input['nominal'],
-            'jenis_transaksi'          => 2,
-            'status'        => 2,
-            'tanggal'       => Time::now(),
-        ];
-        // dd($data);
+
 
         $user = $this->balance->where('id_user', user_id())->first();
-        $new_balance = $user['balance'] - $input['nominal'];
+        $new_balance = $user->balance - $input['nominal'];
+
+        if ($new_balance < 0) {
+            session()->setFlashdata('error', 'Saldo Tidak Mencukupi!');
+            return redirect()->to(base_url('dashboard/history'));
+        }
 
         $updateBalance = [
             'id'        => $user['id'],
@@ -113,6 +113,16 @@ class Transactions extends BaseController
             session()->setFlashdata('error', 'Gagal Menambah Saldo!');
             return redirect()->to(base_url('dashboard/history'));
         }
+
+        $data = [
+            'id_history'    => uniqid(),
+            'id_user'       => user_id(),
+            'amount'        => $input['nominal'],
+            'jenis_transaksi' => 2,
+            'status'        => 2,
+            'tanggal'       => Time::now(),
+        ];
+        // dd($data);
 
         if (!$this->history->save($data)) {
             session()->setFlashdata('error', 'Gagal Membuat Transaksi!');
@@ -125,5 +135,14 @@ class Transactions extends BaseController
 
     public function laporan()
     {
+        $data = [
+            'title' => 'Laporan Keuangan',
+            'active' => 'laporan',
+            'transaction' => $this->history->where('id_user', user_id())->findAll(),
+            'balance'   => $this->balance->where('id_user', user_id())->first(),
+            'tanggal'   => date('d-m-Y'),
+        ];
+
+        return view('dashboard/laporan', $data);
     }
 }
