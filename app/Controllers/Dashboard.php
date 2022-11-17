@@ -29,7 +29,7 @@ class Dashboard extends BaseController
 	{
 		$transaction = $this->history->where('id_user', user_id())->findAll();
 		$data = [
-			'title' => 'History Transactions',
+			'title' => 'Transaksi',
 			'transaction' => $transaction
 		];
 		return view('dashboard/history', $data);

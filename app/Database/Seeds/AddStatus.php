@@ -10,15 +10,15 @@ class AddStatus extends Seeder
     {
         $status = [
             [
-                'id_status' => 0,
+                'id_status' => 1,
                 'status' => "Pending",
             ],
             [
-                'id_status' => 1,
+                'id_status' => 2,
                 'status' => "Gagal",
             ],
             [
-                'id_status' => 2,
+                'id_status' => 3,
                 'status' => "Sukses",
             ],
         ];
