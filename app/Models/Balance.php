@@ -9,7 +9,7 @@ class Balance extends Model
     protected $table            = 'account_balance';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = Balance::class;
     protected $useSoftDeletes   = false;
     protected $allowedFields    = ['id_user', 'balance'];
 
