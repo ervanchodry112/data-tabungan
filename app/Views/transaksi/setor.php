@@ -27,9 +27,7 @@ echo $this->section('content');
                         </h4>
                     </div>
                     <div class="card-body">
-                        <form action="<?= base_url('transactions/add_saldo') ?>" method="post">
-                            
-                        </form>
+                        
                     </div>
                 </div>
             </div>

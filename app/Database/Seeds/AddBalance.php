@@ -11,6 +11,19 @@ class AddBalance extends Seeder
 {
     public function run()
     {
+        $group = [
+            [
+                'id'    => 1,
+                'name'  => 'admin',
+                'description'   => 'Ini adalah admin',
+            ],
+            [
+                'id'    => 2,
+                'name'  => 'nasabah',
+                'description'   => 'Ini adalah nasabah',
+            ],
+        ];
+
         $user = [
             'id'            => 1,
             'email'         => 'nasabah@email.com',

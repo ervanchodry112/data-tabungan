@@ -35,15 +35,16 @@ echo $this->section('navbar');
 			</li>
 			<!-- End Dashboard Nav -->
 
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="<?= base_url('dashboard/history') ?>">
-					<i class="bi bi-clock-history"></i>
-					<span>History</span>
-				</a>
-			</li>
-		<?php
-		}
-		?>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= base_url('dashboard/history') ?>">
+                    <i class="bi bi-clock-history"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li>
+        <?php
+        }
+        ?>
 
 		<?php
 		if (in_groups('admin')) {
@@ -58,6 +59,7 @@ echo $this->section('navbar');
 		<?php
 		}
 		?>
+
 
 		<li class="nav-heading">Account</li>
 		<li class="nav-item">
@@ -79,18 +81,11 @@ echo $this->section('navbar');
 
 <?= $this->renderSection('content') ?>
 
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer position-fixed bottom-0 start-0 end-0 bg-light">
-	<div class="copyright">
-		&copy; Copyright <strong><span>SaveMoney</span></strong>. All Rights Reserved
-	</div>
-	<div class="credits">
-		<!-- All the links in the footer should remain intact. -->
-		<!-- You can delete the links only if you purchased the pro version. -->
-		<!-- Licensing information: https://bootstrapmade.com/license/ -->
-		<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-		Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-	</div>
+
+<footer id="footer" class="footer bg-white position-fixed bottom-0 start-0 end-0">
+    <div class="copyright">
+        &copy; Copyright <strong><span>SaveMoney</span></strong>. All Rights Reserved
+    </div>
 </footer>
 <!-- End Footer -->
 
