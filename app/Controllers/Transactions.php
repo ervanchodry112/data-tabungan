@@ -59,7 +59,7 @@ class Transactions extends BaseController
         $new_balance = $user->balance + $input['nominal'];
 
         $updateBalance = [
-            'id'    => $user['id'],
+            'id'    => $user->id,
             'balance'   => $new_balance,
         ];
 
@@ -106,12 +106,12 @@ class Transactions extends BaseController
         }
 
         $updateBalance = [
-            'id'        => $user['id'],
+            'id'        => $user->id,
             'balance'   => $new_balance,
         ];
 
         if (!$this->balance->save($updateBalance)) {
-            session()->setFlashdata('error', 'Gagal Menambah Saldo!');
+            session()->setFlashdata('error', 'Gagal Menarik Saldo!');
             return redirect()->to(base_url('dashboard/history'));
         }
 
@@ -130,7 +130,7 @@ class Transactions extends BaseController
             return redirect()->to(base_url('dashboard/history'));
         }
 
-        session()->setFlashdata('success', 'Setoran Berhasil Diterima!');
+        session()->setFlashdata('success', 'Penarikan Berhasil!');
         return redirect()->to(base_url('dashboard/history'));
     }
 
