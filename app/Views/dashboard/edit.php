@@ -22,14 +22,14 @@ echo $this->section('content');
                 <form action="<?= base_url('dashboard/update') ?>" method="POST">
                     <div class="p-4 row">
                         <div class="col-6">
-                            <input type="hidden" name="id" value="<?= $user['id'] ?>">
+                            <input type="hidden" name="id" value="<?= $user->id ?>">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" name="nama" class="form-control" id="nama" value="<?= $user['name'] ?>">
+                                <input type="text" name="nama" class="form-control" id="nama" value="<?= $user->name ?>">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" class="form-control" id="email" value="<?= $user['email'] ?>">
+                                <input type="email" name="email" class="form-control" id="email" value="<?= $user->email ?>">
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Submit</button>
                         </div>

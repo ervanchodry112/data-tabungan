@@ -28,11 +28,11 @@ echo $this->section('content');
 							</div>
 							<div class="form-group">
 								<label for="email">Email</label>
-								<input type="text" name="email" class="form-control" id="email">
+								<input type="email" name="email" class="form-control" id="email">
 							</div>
 							<div class="form-group">
 								<label for="balance">Balance</label>
-								<input type="text" name="balance" class="form-control" id="balance">
+								<input type="number" name="balance" class="form-control" id="balance">
 							</div>
 							<button type="submit" class="btn btn-primary mt-3">Submit</button>
 						</div>

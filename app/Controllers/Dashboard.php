@@ -21,6 +21,9 @@ class Dashboard extends BaseController
 
 	public function index()
 	{
+		if (in_groups('admin')) {
+			return redirect()->to(base_url('dashboard/users'));
+		}
 		$pemasukan = $this->history->selectSum('amount', 'pemasukan')->where('id_user', user_id())->where('jenis_transaksi', 1)->first();
 		$pengeluaran = $this->history->selectSum('amount', 'pengeluaran')->where('id_user', user_id())->where('jenis_transaksi', 2)->first();
 		$transactionAll = $this->history->where('id_user', user_id())->findAll();
@@ -58,7 +61,7 @@ class Dashboard extends BaseController
 
 		$data = [
 			'title' => "Users",
-			'users' => $this->user->getUserData()
+			'users' => $this->user->join('account_balance', 'account_balance.id_user=users.id')->findAll(),
 		];
 
 		return view('dashboard/users', $data);
